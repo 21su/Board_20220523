@@ -13,7 +13,8 @@
 <body>
 <div class="container">
     <h1>게시글 수정</h1>
-    <form method="post" action="update">
+    <jsp:include page="./layout/header.jsp" flush="false"></jsp:include>
+    <form method="post" action="/update">
         <input type="hidden" name="id" value="${idDTO.id}">
         <table class="table table-striped">
             <tr>

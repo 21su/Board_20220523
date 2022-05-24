@@ -13,8 +13,8 @@
 <body>
     <header>
         <a href="/">Home</a> &nbsp;
-        <a href="save">글쓰기</a> &nbsp;
-        <a href="findAll">글목록</a> &nbsp;
+        <a href="/save">글쓰기</a> &nbsp;
+        <a href="/findAll">글목록</a> &nbsp;
     </header>
 </body>
 </html>

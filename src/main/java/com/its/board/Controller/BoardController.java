@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -51,42 +52,39 @@ public class BoardController {
     @GetMapping("/passwordCheck")
     public String passwordCheck(@RequestParam("id") Long id,
                                 @RequestParam("type") String type,Model model){
+        BoardDTO boardDTO = boardService.detail(id);
+        model.addAttribute("modelDTO",boardDTO);
         model.addAttribute("id", id);
         model.addAttribute("type", type);
         return "passwordCheck";
     }
     @GetMapping("/update")
-    public String update(@RequestParam("id") Long id,
-                         @RequestParam("boardPassword") String boardPassword,Model model){
-        BoardDTO checkResult = boardService.pwCheck(id,boardPassword);
-        if(checkResult != null){
-            model.addAttribute("idDTO",checkResult);
-            return "update";
-        }else{
-            model.addAttribute("ms","비밀번호가 틀립니다.");
-            model.addAttribute("id",id);
-            model.addAttribute("type","update");
-            return "passwordCheck";
-        }
+    public String update(@RequestParam("id") Long id,Model model){
+        BoardDTO boardDTO = boardService.detail(id);
+        model.addAttribute("idDTO",boardDTO);
+        return "update";
     }
     @GetMapping("/delete")
-    public String delete(@RequestParam("id") Long id,
-                         @RequestParam("boardPassword") String boardPassword,Model model){
-        BoardDTO checkResult = boardService.pwCheck(id,boardPassword);
-        if(checkResult != null){
+    public String delete(@RequestParam("id") Long id){
             boardService.delete(id);
             System.out.println("삭제");
             return "index";
-        }else{
-            model.addAttribute("ms","비밀번호가 틀립니다.");
-            model.addAttribute("id",id);
-            model.addAttribute("type","delete");
-            return "passwordCheck";
-        }
     }
     @PostMapping("/update")
     public String update1(@ModelAttribute BoardDTO boardDTO){
         boardService.update(boardDTO);
-        return "redirect:/detail?id=" + boardDTO.id;
+        return "redirect:/detail?id=" + boardDTO.getId();
+    }
+
+    @GetMapping("/saveFile")
+    public String saveFileForm(){
+        return "saveFile";
+    }
+
+    // 파일첨부
+    @PostMapping("/saveFile")
+    public String saveFile(@ModelAttribute BoardDTO boardDTO) throws IOException {
+        boardService.saveFile(boardDTO);
+        return "redirect:/findAll";
     }
 }

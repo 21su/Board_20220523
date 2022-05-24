@@ -13,7 +13,8 @@
 <body>
 <jsp:include page="./layout/header.jsp" flush="false"></jsp:include>
     <h1>시작페이지</h1>
-    <a href="save">글작성 페이지</a><br />
-    <a href="findAll">글 목록</a>
+    <a href="/findAll">글 목록</a><br />
+    <a href="/save">글작성 페이지</a><br />
+    <a href="/saveFile">글작성(파일)</a><br />
 </body>
 </html>

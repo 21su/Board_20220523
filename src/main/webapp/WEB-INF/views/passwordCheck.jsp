@@ -9,15 +9,24 @@
 <html>
   <head>
     <title>Title</title>
+    <script>
+      function passwordCheck(){
+        const pw = document.getElementById("pwCheck").value;
+        const pwcheck = ${modelDTO.boardPassword};
+        if(pw == pwcheck){
+          location.href="/${type}/?id=${id}";
+        }else{
+          document.getElementById("ms").innerHTML = "비밀번호가 틀렸습니다.<br />";
+        }
+      }
+    </script>
   </head>
   <body>
-    <form method="get" action="/${type}" name="checkForm">
+  <jsp:include page="./layout/header.jsp" flush="false"></jsp:include>
       <h2>비밀번호 확인</h2>
       비밀번호 입력: <input type="password" name="boardPassword" id="pwCheck" placeholder="비밀번호 확인"><br />
-      <a id="ms" style="color: red; font-size: 7px">${ms}</a>
-      <input type="hidden" name="id" value="${id}">
-      <input type="submit" value="확인">
-    </form>
-    <input type="button" onclick="location.href='detail?id=${id}'" value="되돌아가기">
+      <a id="ms" style="color: red; font-size: 7px"></a>
+      <input type="button" onclick="passwordCheck()" value="확인">
+    <input type="button" onclick="location.href='/detail?id=${id}'" value="되돌아가기">
   </body>
 </html>

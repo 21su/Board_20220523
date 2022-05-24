@@ -3,6 +3,7 @@ package com.its.board.DTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Timestamp;
 
@@ -10,11 +11,13 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BoardDTO {
-    public Long id;
-    public String boardTitle;
-    public String boardWriter;
-    public String boardPassword;
-    public String boardContents;
-    public int boardHits;
-    public Timestamp boardCreatedDate;
+    private Long id;
+    private String boardTitle;
+    private String boardWriter;
+    private String boardPassword;
+    private String boardContents;
+    private int boardHits;
+    private Timestamp boardCreatedDate;
+    private MultipartFile boardFile;
+    private String boardFileName;
 }

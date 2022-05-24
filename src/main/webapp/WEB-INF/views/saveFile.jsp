@@ -8,22 +8,27 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>save</title>
+    <title>saveFile</title>
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body>
 <jsp:include page="./layout/header.jsp" flush="false"></jsp:include>
     <div class="container">
             <h1>글작성</h1>
-                    <form method="post" action="save">
+                    <form method="post" action="saveFile" enctype="multipart/form-data">
             <table class="table table-striped">
                 <tr>
                     <td>제목: </td>
-                    <td><input type="text" name="boardTitle" placeholder="제목" required></td>
+                    <td>
+                        <input type="text" name="boardTitle" placeholder="제목" required>
+                    </td>
                 </tr>
                 <tr>
                     <td>작성자: </td>
-                    <td><input type="text" name="boardWriter" placeholder="작성자" required></td>
+                    <td>
+                        <input type="text" name="boardWriter" placeholder="작성자" required>
+                        <input type="file" name="boardFile">
+                    </td>
                 </tr>
                 <tr>
                     <td>비밀번호: </td>

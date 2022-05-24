@@ -8,6 +8,12 @@
         insert into board_table(boardTitle, boardWriter, boardPassword, boardContents, boardCreatedDate)
             values (#{boardTitle},#{boardWriter},#{boardPassword},#{boardContents},now())
     </insert>
+
+    <insert id="saveFile" parameterType="board">
+        insert into board_table(boardTitle, boardWriter, boardPassword, boardContents, boardCreatedDate, boardFileName)
+        values (#{boardTitle},#{boardWriter},#{boardPassword},#{boardContents},now(), #{boardFileName})
+    </insert>
+
     <select id="findAll" resultType="board">
         select * from board_table
     </select>
