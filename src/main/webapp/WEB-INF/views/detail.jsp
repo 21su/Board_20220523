@@ -18,6 +18,9 @@
                 "alt='' height='100' width='100'>"+"<br />";
             }
         }
+        const paging= () =>{
+            location.href = "/paging?page=${page}";
+        }
     </script>
 </head>
 <body>
@@ -33,6 +36,7 @@
            <button onclick="location.href='/passwordCheck?id=${boardDTO.id}&type=delete'">삭제</button><br /><br/>
         <button onclick="location.href='/findAll'">글목록</button>
            <button onclick="location.href='/'">메인</button>
+        <button onclick="paging()">페이징목록</button>
     </div>
 </body>
 </html>

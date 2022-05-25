@@ -16,5 +16,6 @@
     <a href="/findAll">글 목록</a><br />
     <a href="/save">글작성 페이지</a><br />
     <a href="/saveFile">글작성(파일)</a><br />
+    <a href="/paging">페이징목록</a>
 </body>
 </html>

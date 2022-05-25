@@ -17,19 +17,33 @@
     <select id="findAll" resultType="board">
         select * from board_table
     </select>
+
     <select id="detail" parameterType="Long" resultType="board">
         select * from board_table where id=#{id}
     </select>
+
     <update id="hits" parameterType="Long">
         update board_table set boardHits=boardHits+1 where id=#{id}
     </update>
+
     <select id="check" parameterType="board" resultType="board">
         select * from board_table where id=#{id} and boardPassword=#{boardPassword}
     </select>
+
     <delete id="delete" parameterType="Long">
         delete from board_table where id = #{id}
     </delete>
+
     <update id="update" parameterType="board">
         update board_table set boardTitle = #{boardTitle},boardContents = #{boardContents} where id = #{id}
     </update>
+
+    <select id="pagingList" parameterType="java.util.HashMap" resultType="board">
+        select * from board_table order by id desc limit #{start}, #{limit}
+    </select>
+
+    <select id="count" resultType="int">
+        select count(id) from board_table
+    </select>
+
 </mapper>

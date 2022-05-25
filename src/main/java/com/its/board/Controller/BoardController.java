@@ -1,6 +1,7 @@
 package com.its.board.Controller;
 
 import com.its.board.DTO.BoardDTO;
+import com.its.board.DTO.PageDTO;
 import com.its.board.Service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,7 +30,7 @@ public class BoardController {
         boolean saveResult = boardService.save(boardDTO);
         if(saveResult){
             System.out.println("글작성 성공");
-            return "index";
+            return "redirect:/paging";
         } else{
             System.out.println("글작성 실패");
             return "index";
@@ -44,9 +45,11 @@ public class BoardController {
     }
 
     @GetMapping("/detail")
-    public String detail(@RequestParam("id") Long id,Model model){
+    public String detail(@RequestParam("id") Long id,Model model,
+                         @RequestParam(value = "page", required = false, defaultValue = "1") int page){
         BoardDTO boardDTO = boardService.detail(id);
         model.addAttribute("boardDTO", boardDTO);
+        model.addAttribute("page", page);
         return "detail";
     }
     @GetMapping("/passwordCheck")
@@ -85,6 +88,18 @@ public class BoardController {
     @PostMapping("/saveFile")
     public String saveFile(@ModelAttribute BoardDTO boardDTO) throws IOException {
         boardService.saveFile(boardDTO);
-        return "redirect:/findAll";
+        return "redirect:/paging";
+    }
+
+    @GetMapping("/paging")
+    // /paging?page=1로 하면 page 값이 없으면 요청불가
+    // required=false로 하면 page 없이도 /paging 요청도 가능
+    // 별도의 페이지 값을 요청하지 않으면 첫 페이지(page=1)를 보여주자
+    public String paging(@RequestParam(value="page", required=false, defaultValue="1") int page, Model model) {
+        List<BoardDTO> boardList = boardService.pagingList(page);
+        PageDTO paging = boardService.paging(page);
+        model.addAttribute("boardList", boardList);
+        model.addAttribute("paging", paging);
+        return "pagingList";
     }
 }

@@ -12,10 +12,12 @@
 </head>
 <body>
     <header>
-        <a href="/">Home</a> &nbsp;
-        <a href="/save">글쓰기</a> &nbsp;
-        <a href="/saveFile">글쓰기(파일)</a> &nbsp;
-        <a href="/findAll">글목록</a> &nbsp;
+        &nbsp;&nbsp;
+        <a href="/">Home</a> &nbsp;&nbsp;
+        <a href="/save">글쓰기</a> &nbsp;&nbsp;
+        <a href="/saveFile">글쓰기(파일)</a>  &nbsp;&nbsp;
+        <a href="/findAll">글목록</a> &nbsp;&nbsp;
+        <a href="/paging">페이징목록</a> &nbsp;&nbsp;
     </header>
 </body>
 </html>

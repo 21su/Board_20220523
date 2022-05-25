@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="spring_mvc" uuid="c7fe6b88-0750-4a47-ab19-10461a6ee312">
+    <data-source source="LOCAL" name="dataSource" uuid="40c75ba3-3a90-4b4f-8315-00df1bfa43af">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>spring
+
+D:/development_hss/source/hello/spring_framework/Board_20220523/src/main/webapp/WEB-INF/root-context.xml</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://user_spring_mvc:3306</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/db_spring_mvc?useSSL=false&amp;serverTimezone=Asia/Seoul</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
