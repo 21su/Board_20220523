@@ -71,7 +71,7 @@ public class BoardService {
     }
 
     private static final int PAGE_LIMIT = 3;  // 한 페이지에 보여줄 글 갯수
-    private static final int BLOCK_LIMIT = 3;
+    private static final int BLOCK_LIMIT = 5;
 
 
     /**
@@ -103,5 +103,13 @@ public class BoardService {
         paging.setEndPage(endPage);
         paging.setMaxPage(maxPage);
         return paging;
+    }
+
+    public List<BoardDTO> search(String searchType, String q) {
+        Map<String,String> searchparam = new HashMap<>();
+        searchparam.put("type", searchType);
+        searchparam.put("q", q);
+        List<BoardDTO> searchList = boardRepository.search(searchparam);
+        return searchList;
     }
 }

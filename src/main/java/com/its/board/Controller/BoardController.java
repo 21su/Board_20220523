@@ -102,4 +102,12 @@ public class BoardController {
         model.addAttribute("paging", paging);
         return "pagingList";
     }
+
+    @GetMapping("/search")
+    public String search(@RequestParam("searchType") String searchType,
+                         @RequestParam("q") String q, Model model){
+        List<BoardDTO> searchList = boardService.search(searchType,q);
+        model.addAttribute("boardList", searchList);
+        return "findAll";
+    }
 }
