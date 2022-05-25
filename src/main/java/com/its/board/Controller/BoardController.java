@@ -1,8 +1,10 @@
 package com.its.board.Controller;
 
 import com.its.board.DTO.BoardDTO;
+import com.its.board.DTO.CommentDTO;
 import com.its.board.DTO.PageDTO;
 import com.its.board.Service.BoardService;
+import com.its.board.Service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
@@ -18,7 +20,9 @@ import java.util.List;
 @Controller
 public class BoardController {
     @Autowired
-    public BoardService boardService;
+    private BoardService boardService;
+    @Autowired
+    private CommentService commentService;
 
     @GetMapping("/save")
     public String saveForm(){
@@ -50,6 +54,9 @@ public class BoardController {
         BoardDTO boardDTO = boardService.detail(id);
         model.addAttribute("boardDTO", boardDTO);
         model.addAttribute("page", page);
+        // 댓글 목록도 가져가야 함.
+        List<CommentDTO> commentDTOList = commentService.findAll(id);
+        model.addAttribute("commentList", commentDTOList);
         return "detail";
     }
     @GetMapping("/passwordCheck")
